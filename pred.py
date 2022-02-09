@@ -5,7 +5,7 @@ from tensorflow import keras
 import cv2
 
 
-model = keras.models.load_model('C:\\Users\\Karl\\Desktop\\Thesis_openCV_Resnet\\GarbageSeperateModel')
+model = keras.models.load_model('C:\\Users\\Karl\\Desktop\\Windows Form\\GarbageSeperateModel')
 class_names = ['biodegradable', 'nonbiodegradable', 'recyclable']
 
 cam = cv2.VideoCapture(1)
@@ -46,22 +46,24 @@ while True:
     print("The item should be in the", output_class, "bin")
     new_img = cv2.putText(
       img = img_read,
-      text = "Prediction : {}".format(output_class),
+      text = "Prediction: [{}]".format(output_class),
       org = (1,20),
-      fontFace = cv2.FONT_HERSHEY_PLAIN,
-      fontScale = 1.5,
+      fontFace = cv2.FONT_ITALIC,
+      fontScale = .5,
       color = (255, 255, 255),
-      thickness = 2,
+      thickness = 1,
     )
     new_img = cv2.putText(
       img = img_read,
-      text = "Accuracy : {}".format(true_accuracy),
+      text = "Sureness: [{}]".format(true_accuracy),
       org = (1,50),
-      fontFace = cv2.FONT_HERSHEY_PLAIN,
-      fontScale = 1.5,
+      fontFace = cv2.FONT_ITALIC,
+      fontScale = .5,
       color = (255, 255, 255),
-      thickness = 2,
+      thickness = 1,
     )
+
+    image_name += 1
 
     cv2.imshow("Prediction", new_img)
 
