@@ -3,9 +3,17 @@ import numpy as np
 import tensorflow as tf
 from tensorflow import keras
 import cv2
+import os
+
+a = os.getcwd()
+b = a.split("\\")
+dir = ""
+
+for i in b:
+    dir = dir + i + "\\\\"
 
 
-model = keras.models.load_model('C:\\Users\\Karl\\Desktop\\Windows Form\\GarbageSeperateModel')
+model = keras.models.load_model(str(dir) + 'GarbageSeperateModel')
 class_names = ['biodegradable', 'nonbiodegradable', 'recyclable']
 
 cam = cv2.VideoCapture(1)
